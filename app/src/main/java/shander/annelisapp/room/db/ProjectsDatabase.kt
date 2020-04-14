@@ -16,6 +16,8 @@ import shander.annelisapp.room.entity.Material
 import shander.annelisapp.room.entity.Photo
 import shander.annelisapp.room.entity.Project
 import shander.annelisapp.room.entity.ProjectWithAllNested
+import shander.annelisapp.room.entity.defaultMeasures.DefaultListMeasures
+import shander.annelisapp.room.entity.defaultMeasures.DefaultMeasurement
 import shander.annelisapp.room.entity.measurements.ListMeasures
 import shander.annelisapp.room.entity.measurements.Measurement
 import shander.annelisapp.room.entity.tasks.TaskFirstLevel
@@ -23,7 +25,8 @@ import shander.annelisapp.room.entity.tasks.TaskSecondLevel
 import shander.annelisapp.room.entity.tasks.TaskThirdLevel
 
 @Database(entities = [Project::class, Photo::class, Material::class, ListMeasures::class,
-Measurement::class, TaskFirstLevel::class, TaskSecondLevel::class, TaskThirdLevel::class], version = 2, exportSchema = true)
+Measurement::class, TaskFirstLevel::class, TaskSecondLevel::class, TaskThirdLevel::class,
+DefaultListMeasures::class, DefaultMeasurement::class], version = 2, exportSchema = true)
 public abstract class ProjectsDatabase : RoomDatabase() {
 
     abstract fun projectsDao(): ProjectsDao
@@ -34,6 +37,8 @@ public abstract class ProjectsDatabase : RoomDatabase() {
     abstract fun taskFirstDao(): TaskFirstLevelDao
     abstract fun taskSecondDao(): TaskSecondLevelDao
     abstract fun taskThirdDao(): TaskThirdLevelDao
+    abstract fun defaultMeasureDao(): DefaultMeasureDao
+    abstract fun defaultMeasuresListDao(): DefaultMeasuresListDao
 
     private class ProjectsDatabaseCallback: RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
@@ -41,7 +46,7 @@ public abstract class ProjectsDatabase : RoomDatabase() {
             INSTANCE!!.projectsDao().insert(
                 Project(1, "test1", "", "", 0)
             ).concatWith(INSTANCE!!.listMeasuresDao().insert(
-                ListMeasures(1, "list1", "", 1, 1)))
+                ListMeasures(1, "list1", "",  1)))
                 .concatWith( INSTANCE!!.measurementDao().insert(
                     Measurement(1, 1, "m1", "", "", 2.0, "")))
                 .concatWith(INSTANCE!!.materialDao().insert(

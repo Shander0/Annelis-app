@@ -20,7 +20,6 @@ data class ListMeasures(
     val listId: Int,
     val name: String,
     val description: String,
-    val isDefault: Int,
     @ColumnInfo(index = true)
     val parentProjectId: Int
 )

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "d5376ed697b13bdba33e6ba71fe48dce",
+    "identityHash": "8962acb4bf6f5b35f14824022f7d0bb7",
     "entities": [
       {
         "tableName": "projects_table",
@@ -189,7 +189,7 @@
       },
       {
         "tableName": "ListMeasures",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`listId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `isDefault` INTEGER NOT NULL, `parentProjectId` INTEGER NOT NULL, FOREIGN KEY(`parentProjectId`) REFERENCES `projects_table`(`projectId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`listId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `parentProjectId` INTEGER NOT NULL, FOREIGN KEY(`parentProjectId`) REFERENCES `projects_table`(`projectId`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "listId",
@@ -207,12 +207,6 @@
             "fieldPath": "description",
             "columnName": "description",
             "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "isDefault",
-            "columnName": "isDefault",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -549,12 +543,129 @@
             ]
           }
         ]
+      },
+      {
+        "tableName": "DefaultListMeasures",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`listId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "listId",
+            "columnName": "listId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "listId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "DefaultMeasurement",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`measureId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `measuresListId` INTEGER NOT NULL, `measureName` TEXT NOT NULL, `measureDescription` TEXT NOT NULL, `measureImage` TEXT NOT NULL, `measureValue` REAL NOT NULL, `measureTag` TEXT NOT NULL, FOREIGN KEY(`measuresListId`) REFERENCES `ListMeasures`(`listId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "measureId",
+            "columnName": "measureId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measuresListId",
+            "columnName": "measuresListId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureName",
+            "columnName": "measureName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureDescription",
+            "columnName": "measureDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureImage",
+            "columnName": "measureImage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureValue",
+            "columnName": "measureValue",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureTag",
+            "columnName": "measureTag",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "measureId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_DefaultMeasurement_measureId",
+            "unique": false,
+            "columnNames": [
+              "measureId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_DefaultMeasurement_measureId` ON `${TABLE_NAME}` (`measureId`)"
+          },
+          {
+            "name": "index_DefaultMeasurement_measuresListId",
+            "unique": false,
+            "columnNames": [
+              "measuresListId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_DefaultMeasurement_measuresListId` ON `${TABLE_NAME}` (`measuresListId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "ListMeasures",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "measuresListId"
+            ],
+            "referencedColumns": [
+              "listId"
+            ]
+          }
+        ]
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd5376ed697b13bdba33e6ba71fe48dce')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8962acb4bf6f5b35f14824022f7d0bb7')"
     ]
   }
 }
