@@ -10,6 +10,7 @@ import io.reactivex.CompletableObserver
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import shander.annelisapp.App
 import shander.annelisapp.room.dao.*
 import shander.annelisapp.room.entity.Material
 import shander.annelisapp.room.entity.Photo
@@ -75,14 +76,14 @@ public abstract class ProjectsDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: ProjectsDatabase? = null
 
-        fun getDatabase(context: Context): ProjectsDatabase {
+        fun getDatabase(): ProjectsDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
+                    App.instance,
                     ProjectsDatabase::class.java,
                     "projects_database"
                 ).addCallback(ProjectsDatabaseCallback()).build()

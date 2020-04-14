@@ -8,7 +8,7 @@ import shander.annelisapp.room.entity.ProjectWithAllNested
 
 class BaseHelper (context: Context) {
 
-    private val db: ProjectsDatabase = ProjectsDatabase.getDatabase(context.applicationContext)
+    private val db: ProjectsDatabase = ProjectsDatabase.getDatabase()
     private val mContext: Context = context
 
 }

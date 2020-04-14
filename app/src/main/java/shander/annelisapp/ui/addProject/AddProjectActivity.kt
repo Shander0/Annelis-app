@@ -1,13 +1,13 @@
-package shander.annelisapp.ui
+package shander.annelisapp.ui.addProject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import shander.annelisapp.R
 
-class SecondActivity : AppCompatActivity() {
+class AddProjectActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        setContentView(R.layout.activity_add_project)
     }
 }
