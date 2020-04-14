@@ -1,0 +1,560 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "d5376ed697b13bdba33e6ba71fe48dce",
+    "entities": [
+      {
+        "tableName": "projects_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`projectId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `projectName` TEXT NOT NULL, `projectAvatar` TEXT NOT NULL, `projectDescription` TEXT NOT NULL, `projectFinished` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "projectId",
+            "columnName": "projectId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "projectName",
+            "columnName": "projectName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "projectAvatar",
+            "columnName": "projectAvatar",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "projectDescription",
+            "columnName": "projectDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "projectFinished",
+            "columnName": "projectFinished",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "projectId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_projects_table_projectName",
+            "unique": false,
+            "columnNames": [
+              "projectName"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_projects_table_projectName` ON `${TABLE_NAME}` (`projectName`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Photo",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`photoId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `parentProjectId` INTEGER NOT NULL, `photoUri` TEXT NOT NULL, FOREIGN KEY(`parentProjectId`) REFERENCES `projects_table`(`projectId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "photoId",
+            "columnName": "photoId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentProjectId",
+            "columnName": "parentProjectId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "photoUri",
+            "columnName": "photoUri",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "photoId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Photo_parentProjectId",
+            "unique": false,
+            "columnNames": [
+              "parentProjectId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Photo_parentProjectId` ON `${TABLE_NAME}` (`parentProjectId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "projects_table",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "parentProjectId"
+            ],
+            "referencedColumns": [
+              "projectId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Material",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `price` REAL NOT NULL, `amount` REAL NOT NULL, `exists` INTEGER NOT NULL, `description` TEXT NOT NULL, `parentProjectId` INTEGER NOT NULL, FOREIGN KEY(`parentProjectId`) REFERENCES `projects_table`(`projectId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "price",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "amount",
+            "columnName": "amount",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "exists",
+            "columnName": "exists",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentProjectId",
+            "columnName": "parentProjectId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Material_parentProjectId",
+            "unique": false,
+            "columnNames": [
+              "parentProjectId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Material_parentProjectId` ON `${TABLE_NAME}` (`parentProjectId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "projects_table",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "parentProjectId"
+            ],
+            "referencedColumns": [
+              "projectId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "ListMeasures",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`listId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `isDefault` INTEGER NOT NULL, `parentProjectId` INTEGER NOT NULL, FOREIGN KEY(`parentProjectId`) REFERENCES `projects_table`(`projectId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "listId",
+            "columnName": "listId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isDefault",
+            "columnName": "isDefault",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentProjectId",
+            "columnName": "parentProjectId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "listId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_ListMeasures_parentProjectId",
+            "unique": false,
+            "columnNames": [
+              "parentProjectId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ListMeasures_parentProjectId` ON `${TABLE_NAME}` (`parentProjectId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "projects_table",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "parentProjectId"
+            ],
+            "referencedColumns": [
+              "projectId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Measurement",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`measureId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `measuresListId` INTEGER NOT NULL, `measureName` TEXT NOT NULL, `measureDescription` TEXT NOT NULL, `measureImage` TEXT NOT NULL, `measureValue` REAL NOT NULL, `measureTag` TEXT NOT NULL, FOREIGN KEY(`measuresListId`) REFERENCES `ListMeasures`(`listId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "measureId",
+            "columnName": "measureId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measuresListId",
+            "columnName": "measuresListId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureName",
+            "columnName": "measureName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureDescription",
+            "columnName": "measureDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureImage",
+            "columnName": "measureImage",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureValue",
+            "columnName": "measureValue",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureTag",
+            "columnName": "measureTag",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "measureId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Measurement_measureId",
+            "unique": false,
+            "columnNames": [
+              "measureId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Measurement_measureId` ON `${TABLE_NAME}` (`measureId`)"
+          },
+          {
+            "name": "index_Measurement_measuresListId",
+            "unique": false,
+            "columnNames": [
+              "measuresListId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Measurement_measuresListId` ON `${TABLE_NAME}` (`measuresListId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "ListMeasures",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "measuresListId"
+            ],
+            "referencedColumns": [
+              "listId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "TaskFirstLevel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`firstTaskId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `parentProjectId` INTEGER NOT NULL, `firstTaskDescription` TEXT NOT NULL, `firstTaskStartDate` INTEGER NOT NULL, `firstTaskPlannedDuration` INTEGER NOT NULL, `firstTaskEndedDate` INTEGER NOT NULL, FOREIGN KEY(`parentProjectId`) REFERENCES `projects_table`(`projectId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "firstTaskId",
+            "columnName": "firstTaskId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentProjectId",
+            "columnName": "parentProjectId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstTaskDescription",
+            "columnName": "firstTaskDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstTaskStartDate",
+            "columnName": "firstTaskStartDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstTaskPlannedDuration",
+            "columnName": "firstTaskPlannedDuration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstTaskEndedDate",
+            "columnName": "firstTaskEndedDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "firstTaskId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_TaskFirstLevel_parentProjectId",
+            "unique": false,
+            "columnNames": [
+              "parentProjectId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_TaskFirstLevel_parentProjectId` ON `${TABLE_NAME}` (`parentProjectId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "projects_table",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "parentProjectId"
+            ],
+            "referencedColumns": [
+              "projectId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "TaskSecondLevel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`secondTaskId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `parentFirstTaskId` INTEGER NOT NULL, `secondTaskDescription` TEXT NOT NULL, `secondTaskStartDate` INTEGER NOT NULL, `secondTaskPlannedDuration` INTEGER NOT NULL, `secondTaskEndedDate` INTEGER NOT NULL, FOREIGN KEY(`parentFirstTaskId`) REFERENCES `TaskFirstLevel`(`firstTaskId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "secondTaskId",
+            "columnName": "secondTaskId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentFirstTaskId",
+            "columnName": "parentFirstTaskId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "secondTaskDescription",
+            "columnName": "secondTaskDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "secondTaskStartDate",
+            "columnName": "secondTaskStartDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "secondTaskPlannedDuration",
+            "columnName": "secondTaskPlannedDuration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "secondTaskEndedDate",
+            "columnName": "secondTaskEndedDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "secondTaskId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_TaskSecondLevel_parentFirstTaskId",
+            "unique": false,
+            "columnNames": [
+              "parentFirstTaskId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_TaskSecondLevel_parentFirstTaskId` ON `${TABLE_NAME}` (`parentFirstTaskId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "TaskFirstLevel",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "parentFirstTaskId"
+            ],
+            "referencedColumns": [
+              "firstTaskId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "TaskThirdLevel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`thirdTaskId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `parentSecondTaskId` INTEGER NOT NULL, `thirdTaskDescription` TEXT NOT NULL, `thirdTaskStartDate` INTEGER NOT NULL, `thirdTaskPlannedDuration` INTEGER NOT NULL, `thirdTaskEndedDate` INTEGER NOT NULL, FOREIGN KEY(`parentSecondTaskId`) REFERENCES `TaskSecondLevel`(`secondTaskId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "thirdTaskId",
+            "columnName": "thirdTaskId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentSecondTaskId",
+            "columnName": "parentSecondTaskId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thirdTaskDescription",
+            "columnName": "thirdTaskDescription",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thirdTaskStartDate",
+            "columnName": "thirdTaskStartDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thirdTaskPlannedDuration",
+            "columnName": "thirdTaskPlannedDuration",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "thirdTaskEndedDate",
+            "columnName": "thirdTaskEndedDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "thirdTaskId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_TaskThirdLevel_parentSecondTaskId",
+            "unique": false,
+            "columnNames": [
+              "parentSecondTaskId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_TaskThirdLevel_parentSecondTaskId` ON `${TABLE_NAME}` (`parentSecondTaskId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "TaskSecondLevel",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "parentSecondTaskId"
+            ],
+            "referencedColumns": [
+              "secondTaskId"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd5376ed697b13bdba33e6ba71fe48dce')"
+    ]
+  }
+}
