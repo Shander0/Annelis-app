@@ -1,1 +1,1 @@
-# annelis-app
+# Hand-made projects manager app
