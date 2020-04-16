@@ -1,32 +1,32 @@
-package shander.annelisapp.ui.projectsList.fragment
+package shander.annelisapp.ui.projectSummary.fragment
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 
 import shander.annelisapp.R
 
-class MeasurementsFragment : Fragment() {
+class MaterialsFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MeasurementsFragment()
+        fun newInstance() = MaterialsFragment()
     }
 
-    private lateinit var viewModel: MeasurementsViewModel
+    private lateinit var viewModel: MaterialsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.measurements_fragment, container, false)
+        return inflater.inflate(R.layout.materials_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MeasurementsViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MaterialsViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

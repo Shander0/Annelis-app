@@ -1,4 +1,4 @@
-package shander.annelisapp.ui.projectsList.fragment
+package shander.annelisapp.ui.projectSummary.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle

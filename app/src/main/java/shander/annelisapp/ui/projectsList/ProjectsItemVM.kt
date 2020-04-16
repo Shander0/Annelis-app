@@ -6,23 +6,23 @@ import shander.annelisapp.innerEntity.SimpleProjectItem
 import shander.annelisapp.room.entity.Project
 import shander.annelisapp.room.entity.tasks.TaskFirstLevel
 
-class ProjectsListVM: ViewModel() {
+class ProjectsItemVM: ViewModel() {
 
     private val projectPic = MutableLiveData<String>()
     private val projectName = MutableLiveData<String>()
-    private val projectCurrentTasks = MutableLiveData<Int>()
+    private val projectCurrentTasks = MutableLiveData<String>()
 
     fun bind(item: SimpleProjectItem){
         projectPic.value = item.projectIcon
         projectName.value = item.projectName
-        projectCurrentTasks.value = item.tasks
+        projectCurrentTasks.value = item.tasks.toString()
     }
 
     fun getProjectName(): MutableLiveData<String> {
         return projectName
     }
 
-    fun getTaskCount(): MutableLiveData<Int> {
+    fun getTaskCount(): MutableLiveData<String> {
         return projectCurrentTasks
     }
 

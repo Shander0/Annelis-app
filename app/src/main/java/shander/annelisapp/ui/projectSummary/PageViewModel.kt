@@ -1,4 +1,4 @@
-package shander.annelisapp.ui.projectsList
+package shander.annelisapp.ui.projectSummary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

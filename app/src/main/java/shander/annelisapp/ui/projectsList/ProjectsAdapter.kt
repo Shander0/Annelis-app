@@ -1,7 +1,6 @@
 package shander.annelisapp.ui.projectsList
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -9,15 +8,14 @@ import shander.annelisapp.R
 import shander.annelisapp.databinding.ItemProjectsListBinding
 import shander.annelisapp.innerEntity.SimpleProjectItem
 
-class ProjectsAdapter(projectClickListener: ((Int) -> Unit)): RecyclerView.Adapter<ProjectsAdapter.ProjectsViewHolder>() {
+class ProjectsAdapter(val projectClickListener: ProjectClickListener): RecyclerView.Adapter<ProjectsAdapter.ProjectsViewHolder>() {
 
     private lateinit var projects: List<SimpleProjectItem>
-    private var listener = projectClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectsViewHolder {
         val binding: ItemProjectsListBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
             R.layout.item_projects_list, parent, false)
-        return ProjectsViewHolder(binding, listener)
+        return ProjectsViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -33,16 +31,19 @@ class ProjectsAdapter(projectClickListener: ((Int) -> Unit)): RecyclerView.Adapt
         notifyDataSetChanged()
     }
 
-    class ProjectsViewHolder(private val binding: ItemProjectsListBinding,
-                             private val listener: ((Int) -> Unit))
+    inner class ProjectsViewHolder(private val binding: ItemProjectsListBinding)
         : RecyclerView.ViewHolder(binding.root) {
-        private val viewModel = ProjectsListVM()
+        private val viewModel = ProjectsItemVM()
         fun bind(item: SimpleProjectItem) {
             viewModel.bind(item)
             binding.viewModel = viewModel
             binding.root.setOnClickListener {
-                listener.invoke(item.projectId)
+                projectClickListener.onProjectClicked(item.projectId)
             }
         }
+    }
+
+    interface ProjectClickListener{
+        fun onProjectClicked(id: Int)
     }
 }

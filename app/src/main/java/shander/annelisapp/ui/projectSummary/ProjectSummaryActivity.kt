@@ -1,19 +1,14 @@
-package shander.annelisapp.ui.projectsList
+package shander.annelisapp.ui.projectSummary
 
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import shander.annelisapp.R
-import shander.annelisapp.room.db.ProjectsDatabase
 
-class StartListActivity : AppCompatActivity() {
+class ProjectSummaryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

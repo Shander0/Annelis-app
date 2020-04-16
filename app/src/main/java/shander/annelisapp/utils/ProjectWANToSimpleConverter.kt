@@ -2,6 +2,7 @@ package shander.annelisapp.utils
 
 import shander.annelisapp.innerEntity.SimpleProjectItem
 import shander.annelisapp.room.entity.ProjectWithAllNested
+import java.util.concurrent.Callable
 
 class ProjectWANToSimpleConverter(projectsWithAllNested: List<ProjectWithAllNested>) {
 
@@ -19,4 +20,5 @@ class ProjectWANToSimpleConverter(projectsWithAllNested: List<ProjectWithAllNest
 
         return simpleList
     }
+
 }
