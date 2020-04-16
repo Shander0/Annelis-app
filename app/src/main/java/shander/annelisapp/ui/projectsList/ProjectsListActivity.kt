@@ -1,12 +1,15 @@
 package shander.annelisapp.ui.projectsList
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import shander.annelisapp.R
 import shander.annelisapp.databinding.ActivityProjectsListBinding
+import shander.annelisapp.ui.addProject.AddProjectActivity
 
 class ProjectsListActivity : AppCompatActivity() {
 
@@ -22,5 +25,10 @@ class ProjectsListActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(ListActivityVM::class.java)
         binding.viewModel = viewModel
         binding.projectsList.adapter = viewModel.projectsAdapter
+
+        binding.fab.setOnClickListener {
+            val i = Intent(this, AddProjectActivity::class.java)
+            startActivity(i)
+        }
     }
 }

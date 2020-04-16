@@ -73,6 +73,129 @@ public abstract class ProjectsDatabase : RoomDatabase() {
                         Log.wtf("Prefill", "Error: " + e.localizedMessage)
                     }
                 })
+
+
+            INSTANCE!!.projectsDao().insert(
+                Project(2, "test2222", "", "", 0)
+            ).concatWith(INSTANCE!!.listMeasuresDao().insert(
+                ListMeasures(2, "list1", "",  2)))
+                .concatWith( INSTANCE!!.measurementDao().insert(
+                    Measurement(2, 2, "m2", "", "", 2.0, "")))
+                .concatWith(INSTANCE!!.materialDao().insert(
+                    Material(2, "mat2", 0.1, 0.2, 0, "", 2)))
+                .concatWith(INSTANCE!!.photoDao().insert(
+                    Photo(2, 2, "")))
+                .concatWith(INSTANCE!!.taskFirstDao().insert(
+                    TaskFirstLevel(2, 2,"", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskSecondDao().insert(
+                    TaskSecondLevel(2, 2, "", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskThirdDao().insert(
+                    TaskThirdLevel(2,2,"", 0,0,0)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(object : CompletableObserver {
+                    override fun onComplete() {
+                        Log.wtf("Prefill", "completed")
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.wtf("Prefill", "Error: " + e.localizedMessage)
+                    }
+                })
+            INSTANCE!!.projectsDao().insert(
+                Project(3, "test333333", "", "", 0)
+            ).concatWith(INSTANCE!!.listMeasuresDao().insert(
+                ListMeasures(3, "list3", "",  3)))
+                .concatWith( INSTANCE!!.measurementDao().insert(
+                    Measurement(3, 3, "m1", "", "", 2.0, "")))
+                .concatWith(INSTANCE!!.materialDao().insert(
+                    Material(3, "mat1", 0.1, 0.2, 0, "", 3)))
+                .concatWith(INSTANCE!!.photoDao().insert(
+                    Photo(3, 3, "")))
+                .concatWith(INSTANCE!!.taskFirstDao().insert(
+                    TaskFirstLevel(3, 3,"", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskSecondDao().insert(
+                    TaskSecondLevel(3, 3, "", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskThirdDao().insert(
+                    TaskThirdLevel(3,3,"", 0,0,0)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(object : CompletableObserver {
+                    override fun onComplete() {
+                        Log.wtf("Prefill", "completed")
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.wtf("Prefill", "Error: " + e.localizedMessage)
+                    }
+                })
+            INSTANCE!!.projectsDao().insert(
+                Project(4, "test44444", "", "", 0)
+            ).concatWith(INSTANCE!!.listMeasuresDao().insert(
+                ListMeasures(4, "list4", "",  4)))
+                .concatWith( INSTANCE!!.measurementDao().insert(
+                    Measurement(4, 4, "m1", "", "", 2.0, "")))
+                .concatWith(INSTANCE!!.materialDao().insert(
+                    Material(4, "mat4", 0.1, 0.2, 0, "", 4)))
+                .concatWith(INSTANCE!!.photoDao().insert(
+                    Photo(4, 4, "")))
+                .concatWith(INSTANCE!!.taskFirstDao().insert(
+                    TaskFirstLevel(4, 4,"", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskSecondDao().insert(
+                    TaskSecondLevel(4, 4, "", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskThirdDao().insert(
+                    TaskThirdLevel(4,4,"", 0,0,0)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(object : CompletableObserver {
+                    override fun onComplete() {
+                        Log.wtf("Prefill", "completed")
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.wtf("Prefill", "Error: " + e.localizedMessage)
+                    }
+                })
+            INSTANCE!!.projectsDao().insert(
+                Project(5, "test55", "", "", 0)
+            ).concatWith(INSTANCE!!.listMeasuresDao().insert(
+                ListMeasures(5, "list5", "",  5)))
+                .concatWith( INSTANCE!!.measurementDao().insert(
+                    Measurement(5, 5, "m1", "", "", 2.0, "")))
+                .concatWith(INSTANCE!!.materialDao().insert(
+                    Material(5, "mat1", 0.1, 0.2, 0, "", 5)))
+                .concatWith(INSTANCE!!.photoDao().insert(
+                    Photo(5, 5, "")))
+                .concatWith(INSTANCE!!.taskFirstDao().insert(
+                    TaskFirstLevel(5, 5,"", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskSecondDao().insert(
+                    TaskSecondLevel(5, 5, "", 0, 0, 0)))
+                .concatWith(INSTANCE!!.taskThirdDao().insert(
+                    TaskThirdLevel(5,5,"", 0,0,0)))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(object : CompletableObserver {
+                    override fun onComplete() {
+                        Log.wtf("Prefill", "completed")
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.wtf("Prefill", "Error: " + e.localizedMessage)
+                    }
+                })
+
         }
     }
 

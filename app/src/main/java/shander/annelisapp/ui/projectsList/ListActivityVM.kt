@@ -27,9 +27,9 @@ class ListActivityVM: ViewModel(), ProjectsAdapter.ProjectClickListener {
         onLoadProjectsListStart()
         val db: ProjectsDatabase = ProjectsDatabase.getDatabase()
         subscription = CompositeDisposable()
-        db.projectsDao().getAll()
+        subscription.add(db.projectsDao().getAll()
             .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ onLoadProjectsListSuccess(it) })
+            .subscribe({ onLoadProjectsListSuccess(it) }))
     }
 
     private fun onLoadProjectsListStart(){
