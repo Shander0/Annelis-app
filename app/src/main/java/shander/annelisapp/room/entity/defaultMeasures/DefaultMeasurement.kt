@@ -7,24 +7,25 @@ import androidx.room.PrimaryKey
 import shander.annelisapp.room.entity.measurements.ListMeasures
 
 @Entity(
-    indices = [Index("measureId"), Index("measuresListId")],
+    indices = [Index("defMeasureId"), Index("defMeasuresListId")],
     foreignKeys = [
         ForeignKey(
-            entity = ListMeasures::class,
-            parentColumns = ["listId"],
-            childColumns = ["measuresListId"],
+            entity = DefaultListMeasures::class,
+            parentColumns = ["defListId"],
+            childColumns = ["defMeasuresListId"],
             onUpdate = ForeignKey.CASCADE,
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
 data class DefaultMeasurement(
+    val defMeasuresListId: Int,
+    val defMeasureName: String,
+    val defMeasureDescription: String,
+    val defMeasureImage: String,
+    val defMeasureValue: Double,
+    val defMeasureTag: String
+) {
     @PrimaryKey(autoGenerate = true)
-    val measureId: Int,
-    val measuresListId: Int,
-    val measureName: String,
-    val measureDescription: String,
-    val measureImage: String,
-    val measureValue: Double,
-    val measureTag: String
-)
+    var defMeasureId = 0
+}

@@ -15,14 +15,14 @@ interface DefaultMeasureDao : BaseDao<DefaultMeasurement>{
     fun getAll(): Flowable<List<DefaultMeasurement>>
 
     @Transaction
-    @Query("SELECT * FROM DefaultMeasurement WHERE measureId = :measureId LIMIT 1")
+    @Query("SELECT * FROM DefaultMeasurement WHERE defMeasureId = :measureId LIMIT 1")
     fun getMeasure(measureId: Int): Single<DefaultMeasurement>
 
     @Transaction
-    @Query("SELECT * FROM DefaultMeasurement WHERE measuresListId = :listId")
+    @Query("SELECT * FROM DefaultMeasurement WHERE defMeasuresListId = :listId")
     fun getMeasuresFromList(listId: Int): Flowable<List<DefaultMeasurement>>
 
     @Transaction
-    @Query("SELECT * FROM DefaultMeasurement WHERE measureTag LIKE :tag")
+    @Query("SELECT * FROM DefaultMeasurement WHERE defMeasureTag LIKE :tag")
     fun getMeasuresByTag(tag: String): Flowable<List<DefaultMeasurement>>
 }

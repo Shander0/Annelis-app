@@ -16,10 +16,11 @@ import shander.annelisapp.room.entity.Project
     )
 ])
 data class ListMeasures(
-    @PrimaryKey (autoGenerate = true)
-    val listId: Int,
     val name: String,
     val description: String,
     @ColumnInfo(index = true)
     val parentProjectId: Int
-)
+) {
+    @PrimaryKey (autoGenerate = true)
+    var listId = 0
+}

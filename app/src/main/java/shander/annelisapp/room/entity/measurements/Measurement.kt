@@ -19,12 +19,13 @@ import shander.annelisapp.room.entity.measurements.ListMeasures
     ]
 )
 data class Measurement(
-    @PrimaryKey(autoGenerate = true)
-    val measureId: Int,
     val measuresListId: Int,
     val measureName: String,
     val measureDescription: String,
     val measureImage: String,
     val measureValue: Double,
     val measureTag: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var measureId = 0
+}

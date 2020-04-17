@@ -15,8 +15,6 @@ import androidx.room.PrimaryKey
     )
 ])
 data class Material (
-    @PrimaryKey (autoGenerate = true)
-    val id: Int,
     val name: String,
     val price: Double,
     val amount: Double,
@@ -24,4 +22,7 @@ data class Material (
     val description: String,
     @ColumnInfo(index = true)
     val parentProjectId: Int
-)
+) {
+    @PrimaryKey (autoGenerate = true)
+    var id = 0
+}

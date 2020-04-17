@@ -5,8 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class DefaultListMeasures(
+    val defListName: String,
+    val defListDescription: String
+) {
     @PrimaryKey (autoGenerate = true)
-    val listId: Int,
-    val name: String,
-    val description: String
-)
+    var defListId = 0
+}

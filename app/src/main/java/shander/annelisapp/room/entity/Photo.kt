@@ -17,9 +17,10 @@ import androidx.room.PrimaryKey
     ]
 )
 data class Photo(
-    @PrimaryKey(autoGenerate = true)
-    val photoId: Int,
     @ColumnInfo(index = true)
     val parentProjectId: Int,
     val photoUri: String
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var photoId = 0
+}

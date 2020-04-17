@@ -7,7 +7,7 @@ data class DefaultListWithMeasurements(
     @Embedded
     var defaultListMeasures: DefaultListMeasures? = null,
 
-    @Relation(parentColumn = "listId",
-        entityColumn = "measuresListId")
+    @Relation(parentColumn = "defListId",
+        entityColumn = "defMeasuresListId")
     var measurement: List<DefaultMeasurement> = ArrayList()
 )

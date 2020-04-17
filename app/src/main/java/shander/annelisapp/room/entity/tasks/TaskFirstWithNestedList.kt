@@ -5,7 +5,7 @@ import androidx.room.Relation
 
 data class TaskFirstWithNestedList(
     @Embedded
-    var taskFirstLevel: TaskFirstLevel,
+    var taskFirstLevel: TaskFirstLevel? = null,
 
     @Relation(
         parentColumn = "firstTaskId",

@@ -3,12 +3,17 @@ package shander.annelisapp.ui.projectsList
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import shander.annelisapp.R
 import shander.annelisapp.databinding.ActivityProjectsListBinding
+import shander.annelisapp.room.db.ProjectsDatabase
 import shander.annelisapp.ui.addProject.AddProjectActivity
 
 class ProjectsListActivity : AppCompatActivity() {

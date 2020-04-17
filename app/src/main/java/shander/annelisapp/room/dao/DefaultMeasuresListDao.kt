@@ -16,10 +16,10 @@ interface DefaultMeasuresListDao : BaseDao<DefaultListMeasures>{
     fun getAll(): Flowable<List<DefaultListWithMeasurements>>
 
     @Transaction
-    @Query("SELECT * FROM DefaultListMeasures WHERE listId = :listId LIMIT 1")
+    @Query("SELECT * FROM DefaultListMeasures WHERE defListId = :listId LIMIT 1")
     fun getListById(listId: Int): Single<DefaultListWithMeasurements>
 
     @Transaction
-    @Query("SELECT * FROM DefaultListMeasures WHERE name LIKE :tag")
+    @Query("SELECT * FROM DefaultListMeasures WHERE defListName LIKE :tag")
     fun getListByName(tag: String): Flowable<List<DefaultListWithMeasurements>>
 }

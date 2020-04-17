@@ -19,7 +19,7 @@ data class ProjectWithAllNested(
     @Relation(parentColumn = "projectId",
         entityColumn = "parentProjectId",
         entity = ListMeasures::class)
-    var measures: ListWithMeasurements,
+    var measures: ListWithMeasurements?,
 
     @Relation(parentColumn = "projectId",
         entityColumn = "parentProjectId",

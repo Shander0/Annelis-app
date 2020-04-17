@@ -15,12 +15,13 @@ import androidx.room.PrimaryKey
     )
 ])
 data class TaskSecondLevel(
-    @PrimaryKey(autoGenerate = true)
-    val secondTaskId: Int,
     @ColumnInfo(index = true)
     val parentFirstTaskId: Int,
     val secondTaskDescription: String,
     val secondTaskStartDate:Long,
     val secondTaskPlannedDuration:Long,
     val secondTaskEndedDate:Long
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var secondTaskId = 0
+}

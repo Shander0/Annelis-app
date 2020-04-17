@@ -1,0 +1,362 @@
+﻿[
+{
+"measureName": "ДСТ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина спины до талии. От 7го шейного позвонка до талии"
+},
+{
+"measureName": "ДС",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина спины. От снования шеи сбоку до талии по спине"
+},
+{
+"measureName": "ДПЛ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина полочки до талии. От основания шеи до талии через выступающую точку груди"
+},
+{
+"measureName": "ШС",
+"measuresListId": "Злачевская",
+"measureDescription": "Ширина спины между углами подмышечных впадин"
+},
+{
+"measureName": "ШПР",
+"measuresListId": "Злачевская",
+"measureDescription": "Ширина проймы. Измеряется угловыми линейками"
+},
+{
+"measureName": "ШГ",
+"measuresListId": "Злачевская",
+"measureDescription": "Ширина груди. От углов подмышечных впадин опустить вертикали до уровня наивысших точек груди и измерить расстояние между ними"
+},
+{
+"measureName": "ШК",
+"measuresListId": "Злачевская",
+"measureDescription": "Ширина контрольная. Над грудными железами от проймы до проймы"
+},
+{
+"measureName": "ВГ",
+"measuresListId": "Злачевская",
+"measureDescription": "Высота груди. От талии до выступающей точки груди"
+},
+{
+"measureName": "ЦГ",
+"measuresListId": "Злачевская",
+"measureDescription": "Центр груди. Расстояние между выступающими точками груди"
+},
+{
+"measureName": "ШПЛ",
+"measuresListId": "Злачевская",
+"measureDescription": "Ширина плеча. От основания шеи до плечевой косточки или до вертикали, проведенной из угла подмышечной впадины"
+},
+{
+"measureName": "ДЛ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина до локтя. От конца плеча до локтя"
+},
+{
+"measureName": "ДР",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина руки. От конца плеча до мыщелка запястья при слегка согнутой руке"
+},
+{
+"measureName": "ВПК",
+"measuresListId": "Злачевская",
+"measureDescription": "Высота плеча косая. От конца плеча до пересечения линии талии и позвоночника"
+},
+{
+"measureName": "ДПК",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина полочки косая. От конца плеча до выступающей точки груди"
+},
+{
+"measureName": "ДПГ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина полочки с выпуклостью груди. От верха линейки, положенной горизонтально на грудь над грудными железами, до талии через выступающую точку груди"
+},
+{
+"measureName": "ДПБ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина полочки без выпуклости груди. От верха линейки, положенной горизонтально на грудь над грудными железами, до талии между грудями"
+},
+{
+"measureName": "ОТ",
+"measuresListId": "Злачевская",
+"measureDescription": "Обхват талии"
+},
+{
+"measureName": "ОТб",
+"measuresListId": "Злачевская",
+"measureDescription": "Обхват талии на уровне пояса брюк"
+},
+{
+"measureName": "ОБ",
+"measuresListId": "Злачевская",
+"measureDescription": "Обхват бедер. Измеряется полосой шириной 30-40 см, с учетом живота"
+},
+{
+"measureName": "ВС",
+"measuresListId": "Злачевская",
+"measureDescription": "Высота сидения по боку с помощью угловых линеек"
+},
+{
+"measureName": "СД",
+"measuresListId": "Злачевская",
+"measureDescription": "Седло - измеряется сантиметровой лентой от талии спереди до талии сзади через пах"
+},
+{
+"measureName": "ТС",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение линии талии со стороны спины. Положительное значение - вниз"
+},
+{
+"measureName": "ТП",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение линии талии со стороны переда. Положительное значение - вниз"
+},
+{
+"measureName": "ДП",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина спереди до пола"
+},
+{
+"measureName": "ДБ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина сбоку до пола"
+},
+{
+"measureName": "ДЗ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина сзади до пола"
+},
+{
+"measureName": "ВК",
+"measuresListId": "Злачевская",
+"measureDescription": "Высота колена от пола сбоку"
+},
+{
+"measureName": "ОР",
+"measuresListId": "Злачевская",
+"measureDescription": "Обхват руки"
+},
+{
+"measureName": "ОЗ",
+"measuresListId": "Злачевская",
+"measureDescription": "Обхват запястья"
+},
+{
+"measureName": "ОК",
+"measuresListId": "Злачевская",
+"measureDescription": "Обхват колена"
+},
+{
+"measureName": "ОН",
+"measuresListId": "Злачевская",
+"measureDescription": "Обхват ноги в самом толстом месте (примерно на уровне 3-5 см ниже паха)"
+},
+{
+"measureName": "ПХЛ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки спереди (грудь) от талии по горизонтали для лифа"
+},
+{
+"measureName": "БХЛ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки сбоку от талии по горизонтали для лифа"
+},
+{
+"measureName": "ЗХЛ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки сзади (лопатка) от талии по горизонтали для лифа"
+},
+{
+"measureName": "ЗУЛ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки сзади (лопатка) от талии по вертикали для лифа"
+},
+{
+"measureName": "ПХ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки спереди (живот) от талии по горизонтали для юбки"
+},
+{
+"measureName": "ПУ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки спереди (живот) от талии по вертикали для юбки"
+},
+{
+"measureName": "БХ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки сбоку (бедро) от талии по горизонтали для юбки"
+},
+{
+"measureName": "БУ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки сбоку (бедро) от талии по вертикали для юбки"
+},
+{
+"measureName": "ЗХ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки сзади (ягодицы) от талии по горизонтали для юбки"
+},
+{
+"measureName": "ЗУ",
+"measuresListId": "Злачевская",
+"measureDescription": "Отклонение наиболее выступающей точки сзади (ягодицы) от талии по вертикали для юбки"
+},
+{
+"measureName": "ДИ",
+"measuresListId": "Злачевская",
+"measureDescription": "Длина изделия. От талии вниз"
+},
+{
+"measureName": "Р",
+"measuresListId": "Мюллер",
+"measureDescription": "Рост"
+},
+{
+"measureName": "ОГ",
+"measuresListId": "Мюллер",
+"measureDescription": "Обхват груди"
+},
+{
+"measureName": "ОТ",
+"measuresListId": "Мюллер",
+"measureDescription": "Обхват талии"
+},
+{
+"measureName": "ОБ",
+"measuresListId": "Мюллер",
+"measureDescription": "Обхват бедер"
+},
+{
+"measureName": "Др",
+"measuresListId": "Мюллер",
+"measureDescription": "Длина рукава"
+},
+{
+"measureName": "Шп",
+"measuresListId": "Мюллер",
+"measureDescription": "Ширина плеча"
+},
+{
+"measureName": "Ди",
+"measuresListId": "Мюллер",
+"measureDescription": "Длина изделия от 7го шейного позвонка"
+},
+{
+"measureName": "Оз",
+"measuresListId": "Мюллер",
+"measureDescription": "Обхват запястья"
+},
+{
+"measureName": "Ош",
+"measuresListId": "Мюллер",
+"measureDescription": "Обхват шеи"
+},
+{
+"measureName": "Ощ",
+"measuresListId": "Мюллер",
+"measureDescription": "Обхват щиколотки"
+},
+{
+"measureName": "Вс",
+"measuresListId": "Мюллер",
+"measureDescription": "Высота сидения"
+},
+{
+"measureName": "Дтн",
+"measuresListId": "Мюллер",
+"measureDescription": "Длина от талии до низа"
+},
+{
+"measureName": "ОГ1",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Обхват груди без учета прилегания между грудью. Через выступающие точки, без лопаток"
+},
+{
+"measureName": "ОГ2",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Обхват груди с учетом прилегания между грудью. Через выступающие точки, без лопаток"
+},
+{
+"measureName": "Опг",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Обхват под грудью"
+},
+{
+"measureName": "ОТ",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Обхват талии"
+},
+{
+"measureName": "ОБ",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Обхват бедер. На 15 см ниже талии"
+},
+{
+"measureName": "ОБ2",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Обхват бедер по выступающим точкам ягодиц"
+},
+{
+"measureName": "Вб",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Высота бочка по боку от талии до подмышки, лучше с линейкой под рукой"
+},
+{
+"measureName": "Вбедра",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Высота бедра от талии по боку до выступающей точки ягодиц"
+},
+{
+"measureName": "Тнтр",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Точка начала трусов по боку. От талии вниз до желаемой точки начала трусов по боку"
+},
+{
+"measureName": "ДС",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Длина сидения от талии спереди до талии сзади через пах"
+},
+{
+"measureName": "Втог",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Высота от талии до линии под грудью"
+},
+{
+"measureName": "Вчп",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Высота чашки полная. От линии над грудью до линии снятия Опг"
+},
+{
+"measureName": "Жвысч",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Желаемая высота чашки бюстгалтера от уровня снятия ОПГ через выступающую точку груди по дуге до желаемой максимальной высота чашки бюстралтера"
+},
+{
+"measureName": "Жгдек",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Желаемая глубина декольте от талии"
+},
+{
+"measureName": "Жгкор",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Желаемая длина корсета от талии вверх до желаемой наивысшей точки корсета"
+},
+{
+"measureName": "Жгкорбок",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Желаемая длина корсета сбоку от талии по боку вниз до желаемой длины корсета"
+},
+{
+"measureName": "Контршир",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Ширина передней части корсета по нижнему краю"
+},
+{
+"measureName": "Утяж",
+"measuresListId": "Корсетная_школа",
+"measureDescription": "Желаемая утяжка в сантиметрах"
+}
+]

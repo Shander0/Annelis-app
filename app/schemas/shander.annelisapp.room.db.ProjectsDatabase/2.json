@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "8962acb4bf6f5b35f14824022f7d0bb7",
+    "identityHash": "67a2f40ad37dc2bf6303d36be2c1013c",
     "entities": [
       {
         "tableName": "projects_table",
@@ -546,30 +546,30 @@
       },
       {
         "tableName": "DefaultListMeasures",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`listId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`defListId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `defListName` TEXT NOT NULL, `defListDescription` TEXT NOT NULL)",
         "fields": [
           {
-            "fieldPath": "listId",
-            "columnName": "listId",
+            "fieldPath": "defListId",
+            "columnName": "defListId",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "name",
-            "columnName": "name",
+            "fieldPath": "defListName",
+            "columnName": "defListName",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "description",
-            "columnName": "description",
+            "fieldPath": "defListDescription",
+            "columnName": "defListDescription",
             "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "listId"
+            "defListId"
           ],
           "autoGenerate": true
         },
@@ -578,85 +578,85 @@
       },
       {
         "tableName": "DefaultMeasurement",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`measureId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `measuresListId` INTEGER NOT NULL, `measureName` TEXT NOT NULL, `measureDescription` TEXT NOT NULL, `measureImage` TEXT NOT NULL, `measureValue` REAL NOT NULL, `measureTag` TEXT NOT NULL, FOREIGN KEY(`measuresListId`) REFERENCES `ListMeasures`(`listId`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`defMeasureId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `defMeasuresListId` INTEGER NOT NULL, `defMeasureName` TEXT NOT NULL, `defMeasureDescription` TEXT NOT NULL, `defMeasureImage` TEXT NOT NULL, `defMeasureValue` REAL NOT NULL, `defMeasureTag` TEXT NOT NULL, FOREIGN KEY(`defMeasuresListId`) REFERENCES `DefaultListMeasures`(`defListId`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
-            "fieldPath": "measureId",
-            "columnName": "measureId",
+            "fieldPath": "defMeasureId",
+            "columnName": "defMeasureId",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "measuresListId",
-            "columnName": "measuresListId",
+            "fieldPath": "defMeasuresListId",
+            "columnName": "defMeasuresListId",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
-            "fieldPath": "measureName",
-            "columnName": "measureName",
+            "fieldPath": "defMeasureName",
+            "columnName": "defMeasureName",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "measureDescription",
-            "columnName": "measureDescription",
+            "fieldPath": "defMeasureDescription",
+            "columnName": "defMeasureDescription",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "measureImage",
-            "columnName": "measureImage",
+            "fieldPath": "defMeasureImage",
+            "columnName": "defMeasureImage",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "measureValue",
-            "columnName": "measureValue",
+            "fieldPath": "defMeasureValue",
+            "columnName": "defMeasureValue",
             "affinity": "REAL",
             "notNull": true
           },
           {
-            "fieldPath": "measureTag",
-            "columnName": "measureTag",
+            "fieldPath": "defMeasureTag",
+            "columnName": "defMeasureTag",
             "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "measureId"
+            "defMeasureId"
           ],
           "autoGenerate": true
         },
         "indices": [
           {
-            "name": "index_DefaultMeasurement_measureId",
+            "name": "index_DefaultMeasurement_defMeasureId",
             "unique": false,
             "columnNames": [
-              "measureId"
+              "defMeasureId"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_DefaultMeasurement_measureId` ON `${TABLE_NAME}` (`measureId`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_DefaultMeasurement_defMeasureId` ON `${TABLE_NAME}` (`defMeasureId`)"
           },
           {
-            "name": "index_DefaultMeasurement_measuresListId",
+            "name": "index_DefaultMeasurement_defMeasuresListId",
             "unique": false,
             "columnNames": [
-              "measuresListId"
+              "defMeasuresListId"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_DefaultMeasurement_measuresListId` ON `${TABLE_NAME}` (`measuresListId`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_DefaultMeasurement_defMeasuresListId` ON `${TABLE_NAME}` (`defMeasuresListId`)"
           }
         ],
         "foreignKeys": [
           {
-            "table": "ListMeasures",
+            "table": "DefaultListMeasures",
             "onDelete": "CASCADE",
             "onUpdate": "CASCADE",
             "columns": [
-              "measuresListId"
+              "defMeasuresListId"
             ],
             "referencedColumns": [
-              "listId"
+              "defListId"
             ]
           }
         ]
@@ -665,7 +665,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8962acb4bf6f5b35f14824022f7d0bb7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '67a2f40ad37dc2bf6303d36be2c1013c')"
     ]
   }
 }

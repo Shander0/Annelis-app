@@ -5,7 +5,7 @@ import androidx.room.Relation
 
 data class TaskSecondWithThirdsList(
     @Embedded
-    var taskSecondLevel: TaskSecondLevel,
+    var taskSecondLevel: TaskSecondLevel? = null,
 
     @Relation(
         parentColumn = "secondTaskId",
