@@ -1,24 +1,22 @@
 package shander.annelisapp.ui.projectsList
 
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subscribers.DisposableSubscriber
-import io.reactivex.subscribers.ResourceSubscriber
+import shander.annelisapp.App
 import shander.annelisapp.room.db.ProjectsDatabase
 import shander.annelisapp.room.entity.ProjectWithAllNested
+import shander.annelisapp.ui.projectSummary.ProjectSummaryActivity
 import shander.annelisapp.utils.ProjectWANToSimpleConverter
-import java.util.function.Consumer
 
 class ListActivityVM: ViewModel(), ProjectsAdapter.ProjectClickListener {
-    private lateinit var subscription: CompositeDisposable
+    private var subscription: CompositeDisposable
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     val projectsAdapter = ProjectsAdapter(this)
 
@@ -60,6 +58,9 @@ class ListActivityVM: ViewModel(), ProjectsAdapter.ProjectClickListener {
     }
 
     override fun onProjectClicked(id: Int) {
-        TODO("Not yet implemented")
+        val i = Intent(App.instance, ProjectSummaryActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        i.putExtra("id", id)
+        App.instance.startActivity(i)
     }
 }

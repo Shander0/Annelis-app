@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Annelis App</string>
     <string name="title_activity_start_list">StartListActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
-    <string name="tab_text_4">Tab 4</string>
+    <string name="tab_text_1">Задачи</string>
+    <string name="tab_text_2">Галерея</string>
+    <string name="tab_text_3">Мерки</string>
+    <string name="tab_text_4">Материалы</string>
     <string name="title_activity_projects_list">ProjectsListActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
