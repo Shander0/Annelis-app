@@ -1,4 +1,4 @@
-package shander.annelisapp.ui.projectSummary.fragment
+package shander.annelisapp.ui.projectSummary.fragment.tasks
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import shander.annelisapp.R
 import shander.annelisapp.databinding.TasksFragmentBinding
 
 class TasksFragment : Fragment() {
@@ -15,7 +14,8 @@ class TasksFragment : Fragment() {
     private lateinit var binding: TasksFragmentBinding
 
     companion object {
-        fun newInstance(id: Int) = TasksFragment().apply {
+        fun newInstance(id: Int) = TasksFragment()
+            .apply {
             arguments = Bundle().apply {
                 putInt("id", id)
             }

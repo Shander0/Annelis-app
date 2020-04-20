@@ -8,7 +8,7 @@ import shander.annelisapp.R
 import shander.annelisapp.ui.projectSummary.fragment.GalleryFragment
 import shander.annelisapp.ui.projectSummary.fragment.MaterialsFragment
 import shander.annelisapp.ui.projectSummary.fragment.MeasurementsFragment
-import shander.annelisapp.ui.projectSummary.fragment.TasksFragment
+import shander.annelisapp.ui.projectSummary.fragment.tasks.TasksFragment
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,

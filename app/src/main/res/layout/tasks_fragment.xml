@@ -8,13 +8,13 @@
 
         <variable
             name="viewModel"
-            type="shander.annelisapp.ui.projectSummary.fragment.TasksViewModel" />
+            type="shander.annelisapp.ui.projectSummary.fragment.tasks.TasksViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.projectSummary.fragment.TasksFragment">
+        tools:context=".ui.projectSummary.fragment.tasks.TasksFragment">
 
         <TextView
             android:layout_width="match_parent"
