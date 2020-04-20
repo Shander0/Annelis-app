@@ -13,22 +13,27 @@ import shander.annelisapp.room.entity.ProjectWithAllNested
 class ProjectSummaryActivityVM: ViewModel() {
     private lateinit var subscription: CompositeDisposable
     private var projectId = -1
-    private var projectName = MutableLiveData<String>()
-    private var projectDescription= MutableLiveData<String>()
-    private var projectAvatar= MutableLiveData<String>()
+    private val projectName = MutableLiveData<String>("sfuiwehgfweqgearhaeh")
+    private val projectDescription= MutableLiveData<String>()
+    private val projectAvatar= MutableLiveData<String>()
     private var project: ProjectWithAllNested? = null
     private val db: ProjectsDatabase = ProjectsDatabase.getDatabase()
 
     fun setId(id: Int) {
         projectId = id
+        subscription = CompositeDisposable()
         if (projectId > -1) {
             subscription.add(db.projectsDao().getProject(projectId)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                        it -> project=it
-                    projectName.value = it.project!!.projectName
-                    projectDescription.value = it.project!!.projectDescription
-                    projectAvatar.value = it.project!!.projectAvatar
+                        it ->
+                    run {
+                        project = it
+                        projectName.value = it.project!!.projectName
+                        projectDescription.value = it.project!!.projectDescription
+                        projectAvatar.value = it.project!!.projectAvatar
+                        Log.wtf("PROJECT GAINED", " " + projectName.value + "|")
+                    }
                 })
         }
     }

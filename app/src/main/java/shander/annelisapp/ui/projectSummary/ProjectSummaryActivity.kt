@@ -15,18 +15,22 @@ class ProjectSummaryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(ProjectSummaryActivityVM::class.java)
+        val id = intent.getIntExtra("id", -1)
+        viewModel.setId(id)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_start_list)
+        binding.lifecycleOwner = this
         binding.viewPager.adapter = SectionsPagerAdapter(
             this,
-            supportFragmentManager
+            supportFragmentManager,
+            id
         )
         binding.tabs.setupWithViewPager(binding.viewPager)
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
-        viewModel = ViewModelProvider(this).get(ProjectSummaryActivityVM::class.java)
-        viewModel.setId(intent.getIntExtra("id", -1))
+        binding.viewModel = viewModel
     }
 
 }

@@ -21,7 +21,6 @@ class ListActivityVM: ViewModel(), ProjectsAdapter.ProjectClickListener {
     val projectsAdapter = ProjectsAdapter(this)
 
     init {
-        Log.wtf("CALL", "INIT")
         onLoadProjectsListStart()
         val db: ProjectsDatabase = ProjectsDatabase.getDatabase()
         subscription = CompositeDisposable()
@@ -39,7 +38,6 @@ class ListActivityVM: ViewModel(), ProjectsAdapter.ProjectClickListener {
     }
 
     private fun onLoadProjectsListSuccess(projectsList:List<ProjectWithAllNested>){
-        Log.wtf("SUCCESS", "CALLED")
         subscription.add(Observable.just(ProjectWANToSimpleConverter(projectsList).getSimple())
             .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(
                 {projectsAdapter.updateProjectsList(it)

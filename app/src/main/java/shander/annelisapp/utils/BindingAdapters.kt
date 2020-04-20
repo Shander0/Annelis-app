@@ -25,12 +25,12 @@ fun loadImage(view:ImageView, uri:MutableLiveData<String>?) {
     val parentActivity: AppCompatActivity? = view.getParentActivity()
     if (parentActivity != null && uri != null) {
         val requestOptions = RequestOptions()
-        requestOptions.placeholder(shander.annelisapp.R.drawable.item_background_circle)
+        requestOptions.placeholder(shander.annelisapp.R.drawable.item_background)
         uri.observe(parentActivity, Observer { value ->
             Glide.with(view.context)
                 .load(File(value).path)
                 .apply(requestOptions)
-                .apply(RequestOptions.circleCropTransform())
+//                .apply(RequestOptions.circleCropTransform())
                 .into(view)})
     }
 }

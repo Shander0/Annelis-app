@@ -48,7 +48,6 @@ public abstract class ProjectsDatabase : RoomDatabase() {
     private class ProjectsDatabaseCallback : RoomDatabase.Callback() {
 
         fun fillMeasures(storedLists: MutableMap<String, DefaultListMeasures>) {
-            Log.wtf("FILL CALLED", "+")
             val jsonFileMeasuresString = getJsonDataFromAsset(App.instance, "measures.json")
             val gson = Gson()
             val measuresLists = object : TypeToken<List<DefMeasureSample>>() {}.type
