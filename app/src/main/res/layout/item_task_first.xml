@@ -15,12 +15,12 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/btn_expand"
-        android:src="@drawable/ic_expand"
+        android:src="@{viewModel.btnExpanded ? @drawable/ic_collapse : @drawable/ic_expand}"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="3dp"
-        app:mutableVisibility="@{viewModel.checkingVisibility}"/>
+        app:mutableVisibility="@{viewModel.expandableVisibility}"/>
 
     <ImageView
         android:layout_width="50dp"
@@ -41,6 +41,7 @@
         android:textSize="18sp"
         android:layout_centerVertical="true"
         android:textAlignment="center"
+        android:text="@{viewModel.taskDescription}"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

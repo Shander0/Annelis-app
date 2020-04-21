@@ -15,17 +15,6 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:id="@+id/btn_expand"
-            android:src="@drawable/ic_expand"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_margin="3dp"
-            app:mutableVisibility="@{viewModel.checkingVisibility}"/>
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
             android:id="@+id/btn_add"
             android:src="@drawable/ic_add"
             android:layout_margin="3dp"
@@ -40,6 +29,7 @@
             android:id="@+id/task_desc"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
+            android:text="@{viewModel.taskDescription}"
             android:layout_centerVertical="true"
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"

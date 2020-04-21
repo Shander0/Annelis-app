@@ -34,3 +34,13 @@ fun loadImage(view:ImageView, uri:MutableLiveData<String>?) {
                 .into(view)})
     }
 }
+
+@BindingAdapter("resImage")
+fun setResImage(view: ImageView, res: MutableLiveData<Int>) {
+    val parentActivity: AppCompatActivity? = view.getParentActivity()
+    res.observe(parentActivity!!, Observer {
+        Glide.with(view)
+            .load(res)
+            .into(view)
+    })
+}
