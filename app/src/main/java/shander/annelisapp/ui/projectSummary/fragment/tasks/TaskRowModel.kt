@@ -8,10 +8,11 @@ import shander.annelisapp.room.entity.tasks.TaskThirdLevel
 class TaskRowModel {
 
     companion object {
-        @IntDef(FIRST, SECOND, THIRD)
+        @IntDef(FIRST, SECOND, THIRD, PARENT)
         @Retention(AnnotationRetention.SOURCE)
         annotation class RowLevel
 
+        const val PARENT = 5
         const val FIRST = 1
         const val SECOND = 2
         const val THIRD = 3
@@ -21,7 +22,7 @@ class TaskRowModel {
 
     var id: Int
 
-    var isExpanded: Boolean = false
+    var isExpanded: Boolean = true
 
     lateinit var taskFirst: TaskFirstWithNestedList
 

@@ -19,9 +19,8 @@ class TaskItemVM : ViewModel() {
     val checkingVisibility: MutableLiveData<Int> = MutableLiveData(View.VISIBLE)
     val expandableVisibility: MutableLiveData<Int> = MutableLiveData(View.VISIBLE)
     val innerAddVisibility: MutableLiveData<Int> = MutableLiveData(View.GONE)
-    val btnExpanded: MutableLiveData<Boolean> = MutableLiveData(false)
+    val btnExpanded: MutableLiveData<Boolean> = MutableLiveData(true)
     private var isExpandable = false
-    var isExpanded: Boolean = false
 
 
     fun bind(item: Any) {
@@ -55,7 +54,6 @@ class TaskItemVM : ViewModel() {
 
     fun notifyExpand(isExpanded: Boolean) {
         btnExpanded.value = isExpanded
-        this.isExpanded = isExpanded
     }
 
     fun setEdit(isEdit: Boolean) {

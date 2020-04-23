@@ -3,6 +3,7 @@ package shander.annelisapp.room.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import shander.annelisapp.room.entity.tasks.TaskFirstLevel
@@ -26,5 +27,9 @@ interface TaskFirstLevelDao: BaseDao<TaskFirstLevel> {
     @Transaction
     @Query("SELECT * FROM TaskFirstLevel WHERE parentProjectId = :tag AND firstTaskEndedDate = 0")
     fun getUnfinishedTasksByProject(tag: Int): Flowable<List<TaskFirstWithNestedList>>
+
+    @Transaction
+    @Query("DELETE FROM TaskFirstLevel WHERE firstTaskId = :id")
+    fun deleteById(id: Int): Completable
 
 }

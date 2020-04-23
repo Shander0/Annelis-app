@@ -21,4 +21,10 @@
     <string name="menu_send">Send</string>
 
     <string name="projects_list_title">Current projects</string>
+    <string name="task_add_title">Добавление задачи</string>
+    <string name="task_name_hint">Название</string>
+    <string name="task_add_accept">Добавить</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete">Удалить</string>
+    <string name="task_del_title">Удалить задачу?</string>
 </resources>

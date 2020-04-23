@@ -3,6 +3,7 @@ package shander.annelisapp.room.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import shander.annelisapp.room.entity.tasks.TaskSecondLevel
@@ -23,4 +24,7 @@ interface TaskSecondLevelDao: BaseDao<TaskSecondLevel> {
     @Query("SELECT * FROM TaskSecondLevel WHERE parentFirstTaskId = :tag")
     fun getSecondTasksByFirst(tag: Int): Flowable<List<TaskSecondWithThirdsList>>
 
+    @Transaction
+    @Query("DELETE FROM TaskSecondLevel WHERE secondTaskId = :id")
+    fun deleteById(id: Int): Completable
 }
