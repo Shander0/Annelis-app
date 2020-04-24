@@ -17,10 +17,10 @@ import androidx.room.PrimaryKey
 data class TaskSecondLevel(
     @ColumnInfo(index = true)
     val parentFirstTaskId: Int,
-    val secondTaskDescription: String,
+    var secondTaskDescription: String,
     val secondTaskStartDate:Long,
-    val secondTaskPlannedDuration:Long,
-    val secondTaskEndedDate:Long
+    var secondTaskPlannedDuration:Long,
+    var secondTaskEndedDate:Long
 ) {
     @PrimaryKey(autoGenerate = true)
     var secondTaskId = 0

@@ -1,12 +1,17 @@
 package shander.annelisapp.ui.projectSummary
 
+import android.app.Activity
 import android.os.Bundle
+import android.os.Environment
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.github.dhaval2404.imagepicker.ImagePicker
 import shander.annelisapp.R
 import shander.annelisapp.databinding.ActivityStartListBinding
+import java.io.File
 
 class ProjectSummaryActivity : AppCompatActivity() {
 
@@ -27,6 +32,25 @@ class ProjectSummaryActivity : AppCompatActivity() {
         )
         binding.tabs.setupWithViewPager(binding.viewPager)
         binding.viewModel = viewModel
+        binding.projectAvatar.setOnClickListener {
+            ImagePicker.with(this)
+                .compress(2048)
+                .maxResultSize(1080, 1080)
+                .crop()
+                .start { resultCode, data ->
+                    when (resultCode) {
+                        Activity.RESULT_OK -> {
+                            viewModel.projectAvatarSelected(data?.data.toString())
+                        }
+                        ImagePicker.RESULT_ERROR -> {
+                            Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+                        }
+                        else -> {
+                            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+        }
     }
 
 }

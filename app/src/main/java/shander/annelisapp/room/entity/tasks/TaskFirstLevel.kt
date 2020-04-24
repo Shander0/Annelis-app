@@ -18,10 +18,10 @@ import shander.annelisapp.room.entity.Project
 data class TaskFirstLevel(
     @ColumnInfo(index = true)
     val parentProjectId: Int,
-    val firstTaskDescription: String,
+    var firstTaskDescription: String,
     val firstTaskStartDate:Long,
-    val firstTaskPlannedDuration:Long,
-    val firstTaskEndedDate:Long
+    var firstTaskPlannedDuration:Long,
+    var firstTaskEndedDate:Long
 ) {
     @PrimaryKey(autoGenerate = true)
     var firstTaskId = 0

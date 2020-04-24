@@ -18,10 +18,10 @@ import shander.annelisapp.room.entity.tasks.TaskSecondLevel
 data class TaskThirdLevel(
     @ColumnInfo(index = true)
     val parentSecondTaskId: Int,
-    val thirdTaskDescription: String,
+    var thirdTaskDescription: String,
     val thirdTaskStartDate:Long,
-    val thirdTaskPlannedDuration:Long,
-    val thirdTaskEndedDate:Long
+    var thirdTaskPlannedDuration:Long,
+    var thirdTaskEndedDate:Long
 ) {
     @PrimaryKey(autoGenerate = true)
     var thirdTaskId = 0

@@ -27,15 +27,20 @@ class ProjectSummaryActivityVM: ViewModel() {
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                         it ->
-                    run {
                         project = it
                         projectName.value = it.project!!.projectName
                         projectDescription.value = it.project!!.projectDescription
                         projectAvatar.value = it.project!!.projectAvatar
-                        Log.wtf("PROJECT GAINED", " " + projectName.value + "|")
-                    }
                 })
         }
+    }
+
+    fun projectAvatarSelected(uri: String) {
+        projectAvatar.value = uri
+        project?.project?.projectAvatar = uri
+        db.projectsDao().update(project?.project!!).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
     }
 
     fun getProjectName(): MutableLiveData<String> {

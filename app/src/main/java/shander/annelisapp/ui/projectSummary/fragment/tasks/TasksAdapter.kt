@@ -86,6 +86,7 @@ class TasksAdapter(val listener: TaskClickListener) :
                     FIRST
                 )
             }
+            binding.taskDoneCheck.isChecked = item.taskFirstLevel!!.firstTaskEndedDate != 0L
             binding.taskDoneCheck.setOnCheckedChangeListener { _, b ->
                 listener.taskChecked(
                     item.taskFirstLevel!!.firstTaskId,
@@ -142,6 +143,7 @@ class TasksAdapter(val listener: TaskClickListener) :
                     SECOND
                 )
             }
+            binding.taskDoneCheck.isChecked = item.taskSecondLevel!!.secondTaskEndedDate != 0L
             binding.taskDoneCheck.setOnCheckedChangeListener { _,
                                                                b ->
                 listener.taskChecked(item.taskSecondLevel!!.secondTaskId, b, SECOND)
@@ -183,6 +185,7 @@ class TasksAdapter(val listener: TaskClickListener) :
                     THIRD
                 )
             }
+            binding.taskDoneCheck.isChecked = item.thirdTaskEndedDate != 0L
             binding.taskDoneCheck.setOnCheckedChangeListener { _, b ->
                 listener.taskChecked(
                     item.thirdTaskId,

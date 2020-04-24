@@ -7,10 +7,10 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "projects_table")
 data class Project(
     @ColumnInfo(index = true)
-    val projectName: String,
-    val projectAvatar: String,
-    val projectDescription: String,
-    val projectFinished: Int
+    var projectName: String,
+    var projectAvatar: String,
+    var projectDescription: String,
+    var projectFinished: Int
 ) {
     @PrimaryKey(autoGenerate = true)
     var projectId = 0

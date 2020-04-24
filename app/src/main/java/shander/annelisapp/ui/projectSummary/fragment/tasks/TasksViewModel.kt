@@ -1,13 +1,19 @@
 package shander.annelisapp.ui.projectSummary.fragment.tasks
 
+import android.util.Log
 import androidx.annotation.IntDef
 import androidx.lifecycle.ViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import shander.annelisapp.room.db.ProjectsDatabase
+import shander.annelisapp.room.entity.tasks.TaskFirstLevel
 import shander.annelisapp.room.entity.tasks.TaskFirstWithNestedList
+import shander.annelisapp.room.entity.tasks.TaskSecondLevel
+import shander.annelisapp.room.entity.tasks.TaskThirdLevel
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TaskRowModel.Companion.FIRST
+import shander.annelisapp.ui.projectSummary.fragment.tasks.TaskRowModel.Companion.SECOND
+import shander.annelisapp.ui.projectSummary.fragment.tasks.TaskRowModel.Companion.THIRD
 
 class TasksViewModel : ViewModel(), TasksAdapter.TaskClickListener {
     private var subscription: CompositeDisposable = CompositeDisposable()
@@ -62,7 +68,120 @@ class TasksViewModel : ViewModel(), TasksAdapter.TaskClickListener {
     }
 
     override fun taskChecked(taskId: Int, checked: Boolean, level: Int) {
-        TODO("Not yet implemented")
+        val endDate = if (checked) System.currentTimeMillis() else 0
+        when (level) {
+            FIRST -> {
+                db.taskFirstDao()
+                    .getFirstTaskById(taskId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { it ->
+                        it.taskFirstLevel!!.firstTaskEndedDate = endDate
+                        db.taskFirstDao().update(it.taskFirstLevel!!).subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe()
+                        it.secondsList.forEach { second ->
+                            second.taskSecondLevel!!.secondTaskEndedDate = endDate
+                            db.taskSecondDao().update(second.taskSecondLevel!!)
+                                .subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe()
+                            second.thirdsList.forEach { third ->
+                                third.thirdTaskEndedDate = endDate
+                                db.taskThirdDao().update(third).subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe()
+                            }
+                        }
+                    }
+            }
+            SECOND -> {
+                db.taskSecondDao()
+                    .getSecondTaskById(taskId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { second ->
+                        second.taskSecondLevel!!.secondTaskEndedDate = endDate
+                        db.taskSecondDao().update(second.taskSecondLevel!!)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe()
+                        second.thirdsList.forEach { third ->
+                            third.thirdTaskEndedDate = endDate
+                            db.taskThirdDao().update(third).subscribeOn(Schedulers.io())
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe()
+                        }
+                    }
+            }
+            THIRD -> {
+                db.taskThirdDao()
+                    .getThirdTaskById(taskId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { third ->
+                        third.thirdTaskEndedDate = endDate
+                        db.taskThirdDao().update(third).subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe()
+                    }
+            }
+
+        }
+    }
+
+    fun dlgAddConfirmed(level: Int, parentID: Int, name: String) {
+        when (level) {
+            FIRST -> {
+                db.taskFirstDao()
+                    .insert(TaskFirstLevel(projectId, name, System.currentTimeMillis(), 0, 0))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            }
+            SECOND -> {
+                db.taskSecondDao()
+                    .insert(TaskSecondLevel(parentID, name, System.currentTimeMillis(), 0, 0))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            }
+            THIRD -> {
+                db.taskThirdDao()
+                    .insert(TaskThirdLevel(parentID, name, System.currentTimeMillis(), 0, 0))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            }
+
+        }
+    }
+
+    fun dlgDeleteConfirmed(level: Int, id: Int) {
+        when (level) {
+            FIRST -> {
+                db.taskFirstDao()
+                    .deleteById(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            }
+            SECOND -> {
+                db.taskSecondDao()
+                    .deleteById(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            }
+            THIRD -> {
+                db.taskThirdDao()
+                    .deleteById(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            }
+
+        }
     }
 
     interface TaskListener {

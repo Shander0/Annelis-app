@@ -108,59 +108,11 @@ class TasksFragment : Fragment(), TasksViewModel.TaskListener, TaskAddDialog.Tas
     }
 
     override fun addConfirmed(level: Int, parentID: Int, name: String) {
-        val db = ProjectsDatabase.getDatabase()
-        when (level) {
-            FIRST -> {
-                db.taskFirstDao()
-                    .insert(TaskFirstLevel(projectId, name, System.currentTimeMillis(), 0, 0))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
-            }
-            SECOND -> {
-                db.taskSecondDao()
-                    .insert(TaskSecondLevel(parentID, name, System.currentTimeMillis(), 0, 0))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
-            }
-            THIRD -> {
-                db.taskThirdDao()
-                    .insert(TaskThirdLevel(parentID, name, System.currentTimeMillis(), 0, 0))
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
-            }
-
-        }
+        viewModel.dlgAddConfirmed(level, parentID, name)
     }
 
     override fun deleteConfirmed(level: Int, id: Int) {
-        val db = ProjectsDatabase.getDatabase()
-        when (level) {
-            FIRST -> {
-                db.taskFirstDao()
-                    .deleteById(id)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
-            }
-            SECOND -> {
-                db.taskSecondDao()
-                    .deleteById(id)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
-            }
-            THIRD -> {
-                db.taskThirdDao()
-                    .deleteById(id)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe()
-            }
-
-        }
+        viewModel.dlgDeleteConfirmed(level, id)
     }
 
     override fun confirmed(callerID: Int) {
