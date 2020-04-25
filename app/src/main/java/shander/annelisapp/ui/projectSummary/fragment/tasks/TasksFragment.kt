@@ -29,6 +29,7 @@ class TasksFragment : Fragment(), TasksViewModel.TaskListener, TaskAddDialog.Tas
 
     private lateinit var binding: TasksFragmentBinding
     private var projectId = 0
+    private lateinit var viewModel: TasksViewModel
 
     companion object {
         fun newInstance(id: Int) = TasksFragment()
@@ -38,8 +39,6 @@ class TasksFragment : Fragment(), TasksViewModel.TaskListener, TaskAddDialog.Tas
             }
         }
     }
-
-    private lateinit var viewModel: TasksViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

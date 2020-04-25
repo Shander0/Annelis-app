@@ -19,6 +19,7 @@
             android:id="@+id/item_project_pic"
             android:layout_margin="3dp"
             app:loadedImage="@{viewModel.projectImage}"
+            android:background="@drawable/item_background"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

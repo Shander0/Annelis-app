@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import shander.annelisapp.R
-import shander.annelisapp.ui.projectSummary.fragment.GalleryFragment
+import shander.annelisapp.ui.projectSummary.fragment.gallery.GalleryFragment
 import shander.annelisapp.ui.projectSummary.fragment.MaterialsFragment
 import shander.annelisapp.ui.projectSummary.fragment.MeasurementsFragment
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TasksFragment
@@ -26,7 +26,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager, pr
 
     override fun getItem(position: Int): Fragment {
         return when (position){
-            1 -> GalleryFragment.newInstance()
+            1 -> GalleryFragment.newInstance(projectId)
             2 -> MeasurementsFragment.newInstance()
             3 -> MaterialsFragment.newInstance()
             else -> TasksFragment.newInstance(projectId)

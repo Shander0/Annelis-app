@@ -21,7 +21,7 @@ class TasksViewModel : ViewModel(), TasksAdapter.TaskClickListener {
     private var tasksList: List<TaskFirstWithNestedList>? = null
     private val db = ProjectsDatabase.getDatabase()
     val adapter: TasksAdapter = TasksAdapter(this)
-    private var listener: TaskListener? = null
+    private lateinit var listener: TaskListener
 
     companion object {
         @IntDef(INNER_IN_FIRST, INNER_IN_SECOND, INSERT, CLOCK, REMOVE)

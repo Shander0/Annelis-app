@@ -59,7 +59,8 @@
                         android:id="@+id/project_avatar"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        app:loadedImage="@{viewModel.projectAvatar}"/>
+                        app:loadedImage="@{viewModel.projectAvatar}"
+                        android:background="@drawable/item_background"/>
 
                     <TextView
                         android:layout_width="wrap_content"

@@ -2,99 +2,102 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="viewModel"
             type="shander.annelisapp.ui.projectSummary.fragment.tasks.TaskItemVM" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/btn_expand"
-        android:src="@{viewModel.btnExpanded ? @drawable/ic_collapse : @drawable/ic_expand}"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="3dp"
-        android:visibility="gone"
-        app:mutableVisibility="@{viewModel.expandableVisibility}"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/btn_add"
-        android:src="@drawable/ic_add"
-        android:layout_margin="3dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
-        app:mutableVisibility="@{viewModel.editingVisibility}"/>
+        <ImageView
+            android:id="@+id/btn_expand"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="3dp"
+            android:src="@{viewModel.btnExpanded ? @drawable/ic_collapse : @drawable/ic_expand}"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.expandableVisibility}" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/task_desc"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
-        android:layout_centerVertical="true"
-        android:textAlignment="center"
-        android:text="@{viewModel.taskDescription}"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="50dp"
-        android:layout_alignEnd="@id/btn_expand"/>
+        <ImageView
+            android:id="@+id/btn_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_add"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.editingVisibility}" />
 
-    <CheckBox
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/task_done_check"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
-        app:mutableVisibility="@{viewModel.checkingVisibility}"/>
+        <TextView
+            android:id="@+id/task_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/btn_expand"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="50dp"
+            android:text="@{viewModel.taskDescription}"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="3dp"
-        android:id="@+id/btn_remove"
-        android:src="@drawable/ic_delete"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
-        app:mutableVisibility="@{viewModel.editingVisibility}"/>
+        <CheckBox
+            android:id="@+id/task_done_check"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.checkingVisibility}" />
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="3dp"
-        android:id="@+id/btn_date"
-        android:src="@drawable/ic_clock"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_remove"
-        android:visibility="gone"
-        app:mutableVisibility="@{viewModel.editingVisibility}"/>
+        <ImageView
+            android:id="@+id/btn_remove"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_delete"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.editingVisibility}" />
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="3dp"
-        android:id="@+id/btn_inner_add"
-        android:src="@drawable/ic_inner_add"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_date"
-        android:visibility="gone"
-        app:mutableVisibility="@{viewModel.innerAddVisibility}"/>
+        <ImageView
+            android:id="@+id/btn_date"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_clock"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_remove"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.editingVisibility}" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/btn_inner_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_inner_add"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_date"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableVisibility="@{viewModel.innerAddVisibility}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
