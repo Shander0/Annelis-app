@@ -13,6 +13,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 
 import shander.annelisapp.R
 import shander.annelisapp.databinding.GalleryFragmentBinding
+import shander.annelisapp.room.entity.Photo
 
 class GalleryFragment : Fragment(), GalleryViewModel.PictureClickListener {
 
@@ -46,7 +47,7 @@ class GalleryFragment : Fragment(), GalleryViewModel.PictureClickListener {
         return binding.root
     }
 
-    override fun pictureClick(uri: String, picId: Int) {
+    override fun pictureClick(picId: Int, position: Int) {
         if (picId == -1) {
             ImagePicker.with(this)
                 .compress(2048)
@@ -65,8 +66,16 @@ class GalleryFragment : Fragment(), GalleryViewModel.PictureClickListener {
                         }
                     }
                 }
+        } else {
+            val transaction = childFragmentManager.beginTransaction()
+            val previous = childFragmentManager.findFragmentByTag(GalleryFullscreenDialog.TAG)
+            if (previous != null) {
+                transaction.remove(previous)
+            }
+            transaction.addToBackStack(null)
+
+            val dialogFragment = GalleryFullscreenDialog.newInstance(projectId, position)
+            dialogFragment.show(transaction, GalleryFullscreenDialog.TAG)
         }
     }
-
-
 }

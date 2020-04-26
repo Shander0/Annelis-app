@@ -52,19 +52,19 @@ class TasksViewModel : ViewModel(), TasksAdapter.TaskClickListener {
     }
 
     override fun taskAddClick(taskId: Int, taskLevel: Int) {
-        listener?.taskEvent(INSERT, taskId, taskLevel)
+        listener.taskEvent(INSERT, taskId, taskLevel)
     }
 
     override fun taskInnerAddClick(taskId: Int, level: Int) {
-        listener?.taskEvent(if (level == FIRST) INNER_IN_FIRST else INNER_IN_SECOND, taskId, level)
+        listener.taskEvent(if (level == FIRST) INNER_IN_FIRST else INNER_IN_SECOND, taskId, level)
     }
 
     override fun taskClockClick(taskId: Int, level: Int) {
-        listener?.taskEvent(CLOCK, taskId, level)
+        listener.taskEvent(CLOCK, taskId, level)
     }
 
     override fun taskRemoveClick(taskId: Int, level: Int) {
-        listener?.taskEvent(REMOVE, taskId, level)
+        listener.taskEvent(REMOVE, taskId, level)
     }
 
     override fun taskChecked(taskId: Int, checked: Boolean, level: Int) {

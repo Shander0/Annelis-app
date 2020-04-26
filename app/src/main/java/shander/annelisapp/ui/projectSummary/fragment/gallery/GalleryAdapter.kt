@@ -46,12 +46,12 @@ class GalleryAdapter(val listener: PhotoClickListener): RecyclerView.Adapter<Gal
             viewModel.bind(photo)
             binding.viewModel = viewModel
             binding.itemPhoto.setOnClickListener{
-                listener.photoClick(data[adapterPosition].photoUri, data[adapterPosition].photoId)
+                listener.photoClick(data[adapterPosition].photoId, adapterPosition)
             }
         }
     }
 
     interface PhotoClickListener {
-        fun photoClick(uri: String, id: Int)
+        fun photoClick(id: Int, position: Int)
     }
 }

@@ -3,6 +3,7 @@ package shander.annelisapp.room.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import shander.annelisapp.room.entity.Photo
@@ -17,4 +18,8 @@ interface PhotoDao : BaseDao<Photo> {
     @Transaction
     @Query("SELECT * FROM photo WHERE parentProjectId = :parentId")
     fun getPhotosByProject(parentId: Int): Flowable<List<Photo>>
+
+    @Transaction
+    @Query("DELETE FROM photo WHERE photoId = :id")
+    fun deleteById(id: Int): Completable
 }

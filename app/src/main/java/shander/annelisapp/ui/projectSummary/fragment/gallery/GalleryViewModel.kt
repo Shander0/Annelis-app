@@ -14,6 +14,7 @@ class GalleryViewModel : ViewModel(), GalleryAdapter.PhotoClickListener {
     val adapter = GalleryAdapter(this)
     private var subscription: CompositeDisposable = CompositeDisposable()
 
+
     fun init(id: Int, listener: PictureClickListener) {
         this.listener = listener
         projectId = id
@@ -31,7 +32,7 @@ class GalleryViewModel : ViewModel(), GalleryAdapter.PhotoClickListener {
     }
 
     interface PictureClickListener{
-        fun pictureClick(uri: String, picId: Int)
+        fun pictureClick(picId: Int, position: Int)
     }
 
     override fun onCleared() {
@@ -39,7 +40,7 @@ class GalleryViewModel : ViewModel(), GalleryAdapter.PhotoClickListener {
         subscription.clear()
     }
 
-    override fun photoClick(uri: String, id: Int) {
-        listener.pictureClick(uri, id)
+    override fun photoClick(id: Int, position: Int) {
+        listener.pictureClick(id, position)
     }
 }

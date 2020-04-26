@@ -1,6 +1,5 @@
 package shander.annelisapp.utils
 
-import android.R
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +29,7 @@ fun loadImage(view:ImageView, uri:MutableLiveData<String>?) {
             Glide.with(view.context)
                 .load(File(value).path)
                 .apply(RequestOptions().placeholder(shander.annelisapp.R.drawable.ic_add))
-                .apply(RequestOptions().transforms(CenterCrop(), RoundedCorners(20)))
+                .apply(RequestOptions().transforms(CenterCrop(), RoundedCorners(18)))
                 .into(view)})
     }
 }

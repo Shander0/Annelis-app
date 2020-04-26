@@ -13,7 +13,7 @@ import shander.annelisapp.room.entity.ProjectWithAllNested
 class ProjectSummaryActivityVM: ViewModel() {
     private lateinit var subscription: CompositeDisposable
     private var projectId = -1
-    private val projectName = MutableLiveData<String>("sfuiwehgfweqgearhaeh")
+    private val projectName = MutableLiveData<String>()
     private val projectDescription= MutableLiveData<String>()
     private val projectAvatar= MutableLiveData<String>()
     private var project: ProjectWithAllNested? = null
