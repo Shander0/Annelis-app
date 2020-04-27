@@ -1,6 +1,7 @@
 package shander.annelisapp.ui.projectSummary.fragment.gallery
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,6 +64,7 @@ class GalleryFullscreenDialog: DialogFragment() {
                     dismiss()
                 } else {
                     objectsMap.clear()
+                    Log.wtf("INSERTED", ""+it.size)
                     it.forEach { photo ->
                         objectsMap[photo.photoId] = photo.photoUri
                     }
@@ -80,6 +82,8 @@ class GalleryFullscreenDialog: DialogFragment() {
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
+                binding.tvCounter.text = "${position+1}/${objectsMap.size}"
+                currentPosition = position
             }
 
             override fun onPageSelected(position: Int) {
@@ -89,6 +93,7 @@ class GalleryFullscreenDialog: DialogFragment() {
 
         })
         binding.tvDelete.setOnClickListener {
+            Log.wtf("DEL CALL", "" + objectsMap.size + " " + currentPosition)
             if (objectsMap.size > currentPosition) {
                 ProjectsDatabase.getDatabase().photoDao()
                     .deleteById(objectsMap.keys.elementAt(currentPosition))
