@@ -3,6 +3,7 @@ package shander.annelisapp.room.dao
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import shander.annelisapp.room.entity.Project
@@ -26,4 +27,8 @@ interface ProjectsDao : BaseDao<Project>{
     @Transaction
     @Query("SELECT * FROM projects_table WHERE projectFinished = :isActive")
     fun getActiveProjects(isActive: Boolean): Flowable<List<ProjectWithAllNested>>
+
+    @Transaction
+    @Query("DELETE FROM projects_table WHERE projectId = :id")
+    fun deleteById(id: Int): Completable
 }

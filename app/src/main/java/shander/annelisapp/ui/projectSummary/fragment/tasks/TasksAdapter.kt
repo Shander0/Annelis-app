@@ -270,9 +270,9 @@ class TasksAdapter(val listener: TaskClickListener) :
         val model = taskModelList[position]
         when (model.level) {
             FIRST -> {
-                outerLoop@ while (true) {
+                while (true) {
                     if (nextPosition == taskModelList.size || taskModelList[nextPosition].level == FIRST) {
-                        break@outerLoop
+                        break
                     }
 
                     taskModelList.removeAt(nextPosition)

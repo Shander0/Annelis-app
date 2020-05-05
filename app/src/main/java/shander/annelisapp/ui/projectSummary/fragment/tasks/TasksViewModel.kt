@@ -33,6 +33,7 @@ class TasksViewModel : ViewModel(), TasksAdapter.TaskClickListener {
         const val INSERT = 3
         const val CLOCK = 4
         const val REMOVE = 5
+        const val INIT = 6
     }
 
     fun init(id: Int, listener: TaskListener) {
@@ -40,8 +41,13 @@ class TasksViewModel : ViewModel(), TasksAdapter.TaskClickListener {
         subscription.add(db.taskFirstDao().getTasksByProject(projectId)
             .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe {
-                tasksList = it
-                adapter.updateTasks(tasksList!!)
+                if (it.isEmpty()) {
+                    listener.taskEvent(INIT, 0, 0)
+                } else {
+                    tasksList = it
+                    adapter.updateTasks(tasksList!!)
+                    listener.taskEvent(INIT, 1, 1)
+                }
             })
         this.listener = listener
     }

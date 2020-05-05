@@ -23,6 +23,14 @@ class ProjectsAdapter(val projectClickListener: ProjectClickListener): RecyclerV
         return if(::projects.isInitialized) projects.size else 0
     }
 
+    fun getIdByPosition(position: Int): Int {
+        return projects[position].projectId
+    }
+
+    fun getNameByPosition(position: Int): String {
+        return projects[position].projectName
+    }
+
     override fun onBindViewHolder(holder: ProjectsViewHolder, position: Int) {
         holder.bind(projects[position])
     }

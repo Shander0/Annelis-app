@@ -1,9 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.addProject.AddProjectActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="shander.annelisapp.ui.addProject.AddProjectVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.addProject.AddProjectActivity">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_border_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".10" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/item_border_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".90" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/name_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".14" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/image_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".24" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/image_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".54" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/description_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".58" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/apply_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".80" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/new_project"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_background"
+            android:hint="@string/project_name"
+            android:inputType="textCapSentences"
+            android:maxLength="30"
+            android:padding="10dp"
+            android:text="@={viewModel.projectName}"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@id/item_border_right"
+            app:layout_constraintStart_toStartOf="@id/item_border_left"
+            app:layout_constraintTop_toTopOf="@id/name_top" />
+
+        <ImageView
+            android:id="@+id/project_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:loadedImage="@{viewModel.projectAvatar}"
+            android:background="@drawable/item_background"
+            app:layout_constraintBottom_toBottomOf="@id/image_bottom"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/image_top" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_background"
+            android:hint="@string/project_desc"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:minLines="4"
+            android:padding="10dp"
+            android:text="@={viewModel.projectDescription}"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="@id/item_border_right"
+            app:layout_constraintStart_toStartOf="@id/item_border_left"
+            app:layout_constraintTop_toTopOf="@id/description_top" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_apply"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="@drawable/item_background_color"
+            android:text="@string/create_project"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="@id/apply_top"
+            app:layout_constraintStart_toStartOf="@id/item_border_left"
+            app:layout_constraintEnd_toEndOf="@id/item_border_right" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -21,6 +21,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_no_tasks"
+            android:textSize="18sp"
+            android:lines="2"
+            android:text="@string/no_tasks_msg"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_margin="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_add_task"
+            android:textSize="20sp"
+            android:text="@string/add_task"
+            android:layout_gravity="center"
+            android:background="@drawable/item_background"
+            android:textAlignment="center"
+            android:layout_marginTop="60dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"

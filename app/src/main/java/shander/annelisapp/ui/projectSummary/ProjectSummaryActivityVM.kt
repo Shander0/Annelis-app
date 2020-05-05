@@ -25,9 +25,8 @@ class ProjectSummaryActivityVM: ViewModel() {
         if (projectId > -1) {
             subscription.add(db.projectsDao().getProject(projectId)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                        it ->
-                        project = it
+                .subscribe {it ->
+                    project = it
                         projectName.value = it.project!!.projectName
                         projectDescription.value = it.project!!.projectDescription
                         projectAvatar.value = it.project!!.projectAvatar

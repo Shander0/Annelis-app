@@ -19,6 +19,7 @@ import shander.annelisapp.ui.commonDialogs.ConfirmationDialog
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TaskRowModel.Companion.FIRST
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TaskRowModel.Companion.SECOND
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TaskRowModel.Companion.THIRD
+import shander.annelisapp.ui.projectSummary.fragment.tasks.TasksViewModel.Companion.INIT
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TasksViewModel.Companion.INNER_IN_FIRST
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TasksViewModel.Companion.INNER_IN_SECOND
 import shander.annelisapp.ui.projectSummary.fragment.tasks.TasksViewModel.Companion.INSERT
@@ -53,12 +54,36 @@ class TasksFragment : Fragment(), TasksViewModel.TaskListener, TaskAddDialog.Tas
         binding.tasksList.adapter = viewModel.adapter
 
         binding.fab.setOnClickListener { viewModel.adapter.setIsEditing(!viewModel.adapter.isEditMode) }
+        binding.btnAddTask.setOnClickListener {
+            val transaction = childFragmentManager.beginTransaction()
+            val previous = childFragmentManager.findFragmentByTag(TaskAddDialog.TAG)
+            if (previous != null) {
+                transaction.remove(previous)
+            }
+            transaction.addToBackStack(null)
+
+            val dialogFragment = TaskAddDialog.newInstance(1, 0)
+            dialogFragment.show(transaction, TaskAddDialog.TAG)
+        }
 
         return binding.root
     }
 
     override fun taskEvent(type: Int, taskId: Int, level: Int) {
         when (type) {
+            INIT -> {
+                if (taskId == 0) {
+                    binding.fab.visibility = View.GONE
+                    binding.tasksList.visibility = View.GONE
+                    binding.btnAddTask.visibility = View.VISIBLE
+                    binding.tvNoTasks.visibility = View.VISIBLE
+                } else {
+                    binding.fab.visibility = View.VISIBLE
+                    binding.tasksList.visibility = View.VISIBLE
+                    binding.btnAddTask.visibility = View.GONE
+                    binding.tvNoTasks.visibility = View.GONE
+                }
+            }
             INSERT -> {
                 val transaction = childFragmentManager.beginTransaction()
                 val previous = childFragmentManager.findFragmentByTag(TaskAddDialog.TAG)

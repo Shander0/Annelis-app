@@ -149,19 +149,7 @@ public abstract class ProjectsDatabase : RoomDatabase() {
                 .concatWith(INSTANCE!!.projectsDao().insert(Project("ТЕСТ 11 пример", "", "", 0)))
                 .concatWith(INSTANCE!!.projectsDao().insert(Project("ТЕСТ 12 пример", "", "", 0)))
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(object : CompletableObserver {
-                    override fun onComplete() {
-                        Log.wtf("Prefill", "completed")
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Log.wtf("Prefill", "Error: " + e.localizedMessage)
-                    }
-                })
+                .observeOn(AndroidSchedulers.mainThread()).subscribe()
 
         }
     }

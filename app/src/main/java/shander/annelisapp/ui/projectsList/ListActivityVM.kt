@@ -10,7 +10,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import shander.annelisapp.App
+import shander.annelisapp.innerEntity.SimpleProjectItem
 import shander.annelisapp.room.db.ProjectsDatabase
+import shander.annelisapp.room.entity.Project
 import shander.annelisapp.room.entity.ProjectWithAllNested
 import shander.annelisapp.ui.projectSummary.ProjectSummaryActivity
 import shander.annelisapp.utils.ProjectWANToSimpleConverter
@@ -19,14 +21,22 @@ class ListActivityVM: ViewModel(), ProjectsAdapter.ProjectClickListener {
     private var subscription: CompositeDisposable
     val loadingVisibility: MutableLiveData<Int> = MutableLiveData()
     val projectsAdapter = ProjectsAdapter(this)
+    val db: ProjectsDatabase = ProjectsDatabase.getDatabase()
 
     init {
         onLoadProjectsListStart()
-        val db: ProjectsDatabase = ProjectsDatabase.getDatabase()
         subscription = CompositeDisposable()
         subscription.add(db.projectsDao().getAll()
             .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe({ onLoadProjectsListSuccess(it) }))
+    }
+
+    fun projectDelete(position: Int) {
+        if (position!=-1) {
+        subscription.add(db.projectsDao().deleteById(projectsAdapter.getIdByPosition(position))
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .subscribe())
+        }
     }
 
     private fun onLoadProjectsListStart(){

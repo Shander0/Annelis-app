@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.imagepicker.ImagePicker
+import shander.annelisapp.App
 import shander.annelisapp.R
 import shander.annelisapp.databinding.ActivityStartListBinding
 import java.io.File
@@ -37,6 +38,7 @@ class ProjectSummaryActivity : AppCompatActivity() {
                 .compress(2048)
                 .maxResultSize(1080, 1080)
                 .crop()
+                .saveDir(App.instance.filesDir)
                 .start { resultCode, data ->
                     when (resultCode) {
                         Activity.RESULT_OK -> {
